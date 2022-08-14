@@ -38,13 +38,13 @@ namespace WpfApp1
             HtmlWeb web = new HtmlWeb();
             HtmlDocument doc = web.Load("https://lowcygier.pl/darmowe/");
             var Headers = doc.DocumentNode.CssSelect("h2.post-title > a");
-            var Headers2 = doc.DocumentNode.CssSelect("div.nc-main > div.nc-meta > ul");
+            var Headers2 = doc.DocumentNode.CssSelect("div.nc-main > div > div.nc-meta > ul");
             int i = 0;
             foreach (var item in Headers)
             {
                 if (Headers2.ElementAt(i).InnerText.Contains("PC"))
                 {
-                    item.CssSelectAncestors("div.nc-main > div.nc-meta > ul");
+                    item.CssSelectAncestors("div.nc-main > div > div.nc-meta > ul");
                     Button btn = new Button();
                     btn.Tag = item.Attributes["href"].Value;
                     btn.Content = item.InnerText;
